@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Tenses – Grammar Drills</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+  :root {
+    --ink:#1a1a2e;--paper:#f7f5f0;--cream:#ede9e0;--gold:#c9952a;--gold-light:#f0d080;
+    --green:#2a7a4b;--green-bg:#e8f5ee;--red:#c0392b;--red-bg:#fdecea;
+    --blue:#1a5fa8;--muted:#7a7570;--rule:#d8d3c8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh}
+  header{background:var(--ink);color:var(--paper);padding:1.5rem 1rem;text-align:center}
+  header h1{font-family:'DM Serif Display',serif;font-size:clamp(1.4rem,5vw,2rem)}
+  header h1 em{color:var(--gold-light);font-style:italic}
+  header p{margin-top:.4rem;color:#a0a0b8;font-size:.85rem}
+  nav{display:flex;background:var(--cream);border-bottom:2px solid var(--rule);overflow-x:auto}
+  nav button{flex:1;min-width:120px;padding:.85rem .75rem;background:none;border:none;border-bottom:3px solid transparent;margin-bottom:-2px;font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);cursor:pointer;white-space:nowrap;transition:color .2s,border-color .2s}
+  nav button.active{color:var(--ink);border-bottom-color:var(--gold)}
+  .ref-strip{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border-bottom:1px solid var(--rule)}
+  .ref-card{background:var(--paper);padding:.9rem 1rem}
+  .ref-card h3{font-family:'DM Serif Display',serif;font-size:.9rem;margin-bottom:.35rem;color:var(--blue)}
+  .ref-card ul{list-style:none;font-size:.76rem;color:var(--muted);line-height:1.7}
+  .ref-card ul li::before{content:"→ ";color:var(--gold)}
+  .section{display:none;padding:1.25rem 1rem 3rem;max-width:700px;margin:0 auto}
+  .section.active{display:block}
+  .section-title{font-family:'DM Serif Display',serif;font-size:1.2rem;margin-bottom:.2rem}
+  .section-subtitle{font-size:.8rem;color:var(--muted);margin-bottom:1.2rem}
+  .score-bar{display:flex;align-items:center;gap:1rem;background:var(--cream);border:1px solid var(--rule);border-radius:8px;padding:.65rem 1rem;margin-bottom:1.2rem;font-size:.85rem}
+  .score-val{font-family:'DM Serif Display',serif;font-size:1.3rem;color:var(--gold)}
+  .reset-btn{margin-left:auto;padding:.35rem .75rem;background:none;border:1.5px solid var(--rule);border-radius:6px;font-family:'DM Sans',sans-serif;font-size:.76rem;color:var(--muted);cursor:pointer}
+  .reset-btn:hover{border-color:var(--ink);color:var(--ink)}
+  .ex-card{background:white;border:1px solid var(--rule);border-radius:10px;padding:1.1rem;margin-bottom:.9rem}
+  .ex-num{font-family:'JetBrains Mono',monospace;font-size:.68rem;font-weight:500;color:var(--gold);letter-spacing:.1em;margin-bottom:.4rem}
+  .ex-sentence{font-size:.97rem;line-height:1.6;margin-bottom:.6rem}
+  .ex-hint{font-size:.77rem;color:var(--muted);margin-bottom:.65rem;font-style:italic}
+  .mcq-options{display:flex;flex-direction:column;gap:.35rem}
+  .mcq-btn{text-align:left;padding:.5rem .85rem;border:1.5px solid var(--rule);border-radius:6px;background:var(--paper);font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s}
+  .mcq-btn:hover:not(:disabled){border-color:var(--gold);background:#fffbf0}
+  .mcq-btn.correct{border-color:var(--green);background:var(--green-bg);color:var(--green);font-weight:600}
+  .mcq-btn.wrong{border-color:var(--red);background:var(--red-bg);color:var(--red)}
+  .mcq-btn:disabled{cursor:default}
+  .input-row{display:flex;gap:.5rem;flex-wrap:wrap}
+  .ex-input{flex:1;min-width:140px;border:1.5px solid var(--rule);border-radius:6px;padding:.45rem .7rem;font-family:'DM Sans',sans-serif;font-size:.93rem;color:var(--ink);background:var(--paper);outline:none;transition:border-color .2s}
+  .ex-input:focus{border-color:var(--gold)}
+  .ex-input.correct{border-color:var(--green);background:var(--green-bg);color:var(--green)}
+  .ex-input.wrong{border-color:var(--red);background:var(--red-bg);color:var(--red)}
+  .check-btn{padding:.45rem .9rem;background:var(--ink);color:var(--paper);border:none;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:.83rem;font-weight:600;cursor:pointer}
+  .check-btn:hover{background:#333}
+  .feedback{margin-top:.5rem;font-size:.81rem;font-weight:500;min-height:1.1em}
+  .feedback.correct{color:var(--green)}
+  .feedback.wrong{color:var(--red)}
+  .feedback .ans{font-family:'JetBrains Mono',monospace}
+  @media(max-width:480px){.ref-strip{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <h1>English Tenses <em>Grammar Drills</em></h1>
+  <p>Past Simple · Present Perfect · Present Simple</p>
+</header>
+
+<nav>
+  <button class="active" data-tab="tab1">Past Simple<br>vs Present Perfect</button>
+  <button data-tab="tab2">Present Simple<br>vs Present Perfect</button>
+  <button data-tab="tab3">Fill the Gap<br>Mixed</button>
+</nav>
+
+<!-- TAB 1 -->
+<div id="tab1" class="section active">
+  <div class="ref-strip">
+    <div class="ref-card">
+      <h3>Past Simple</h3>
+      <ul>
+        <li>Action finie à un moment précis</li>
+        <li>yesterday, last week, in 2010, ago</li>
+        <li>She <strong>left</strong> at 9 AM.</li>
+      </ul>
+    </div>
+    <div class="ref-card">
+      <h3>Present Perfect</h3>
+      <ul>
+        <li>Lien avec le présent / expérience</li>
+        <li>already, just, yet, ever, never, since, for</li>
+        <li>She <strong>has just left</strong>.</li>
+      </ul>
+    </div>
+  </div>
+  <div style="padding-top:1.2rem">
+    <p class="section-title">Choisis le bon temps</p>
+    <p class="section-subtitle">Past Simple ou Present Perfect ?</p>
+    <div class="score-bar">
+      <div><span class="score-val" id="s1-score">0</span> / <span id="s1-total">0</span> correct</div>
+      <button class="reset-btn" data-reset="tab1">Reset</button>
+    </div>
+    <div id="tab1-ex"></div>
+  </div>
+</div>
+
+<!-- TAB 2 -->
+<div id="tab2" class="section">
+  <div class="ref-strip">
+    <div class="ref-card">
+      <h3>Present Simple</h3>
+      <ul>
+        <li>Habitudes, faits généraux</li>
+        <li>always, every day, usually</li>
+        <li>He <strong>drinks</strong> coffee every morning.</li>
+      </ul>
+    </div>
+    <div class="ref-card">
+      <h3>Present Perfect</h3>
+      <ul>
+        <li>Expérience ou résultat récent</li>
+        <li>already, just, yet, ever, never</li>
+        <li>He <strong>has drunk</strong> 3 coffees today.</li>
+      </ul>
+    </div>
+  </div>
+  <div style="padding-top:1.2rem">
+    <p class="section-title">Choisis le bon temps</p>
+    <p class="section-subtitle">Present Simple ou Present Perfect ?</p>
+    <div class="score-bar">
+      <div><span class="score-val" id="s2-score">0</span> / <span id="s2-total">0</span> correct</div>
+      <button class="reset-btn" data-reset="tab2">Reset</button>
+    </div>
+    <div id="tab2-ex"></div>
+  </div>
+</div>
+
+<!-- TAB 3 -->
+<div id="tab3" class="section">
+  <p class="section-title">Fill in the Blank</p>
+  <p class="section-subtitle">Tape la bonne forme du verbe entre parenthèses.</p>
+  <div class="score-bar">
+    <div><span class="score-val" id="s3-score">0</span> / <span id="s3-total">0</span> correct</div>
+    <button class="reset-btn" data-reset="tab3">Reset</button>
+  </div>
+  <div id="tab3-ex"></div>
+</div>
+
+<script>
+const TAB1 = [
+  { s:"I ___ to Paris twice. It's a beautiful city.", opts:["went","have been"], ans:"have been", hint:"Expérience de vie, pas de temps précis → Present Perfect." },
+  { s:"She ___ her keys yesterday morning.", opts:["lost","has lost"], ans:"lost", hint:"'Yesterday' = moment précis → Past Simple." },
+  { s:"Have you ever eaten sushi?", opts:["Yes, I tried it last year.","Yes, I have tried it recently."], ans:"Yes, I tried it last year.", hint:"La réponse mentionne 'last year' = temps précis → Past Simple." },
+  { s:"We ___ the movie last Saturday.", opts:["watched","have watched"], ans:"watched", hint:"'Last Saturday' = temps fini → Past Simple." },
+  { s:"He ___ just arrived home.", opts:["just arrived","has just arrived"], ans:"has just arrived", hint:"'Just' = action très récente → Present Perfect." },
+  { s:"They ___ married in 2018.", opts:["got","have got"], ans:"got", hint:"'In 2018' = date précise → Past Simple." },
+  { s:"I ___ never seen a bear in real life.", opts:["never saw","have never seen"], ans:"have never seen", hint:"'Never' avec expérience de vie → Present Perfect." },
+  { s:"Did you finish the report? – Yes, I ___ it an hour ago.", opts:["finished","have finished"], ans:"finished", hint:"'An hour ago' = temps précis → Past Simple." },
+  { s:"The scientist ___ a new vaccine last month.", opts:["developed","has developed"], ans:"developed", hint:"'Last month' = période terminée → Past Simple." },
+  { s:"Oh no! Someone ___ my wallet!", opts:["stole","has stolen"], ans:"has stolen", hint:"Le résultat (pas de portefeuille) est ressenti maintenant → Present Perfect." }
+];
+
+const TAB2 = [
+  { s:"He ___ coffee every morning before work.", opts:["drinks","has drunk"], ans:"drinks", hint:"Habitude quotidienne → Present Simple." },
+  { s:"I ___ already done my homework, so I can go out.", opts:["already do","have already done"], ans:"have already done", hint:"'Already' + résultat maintenant → Present Perfect." },
+  { s:"Water ___ at 100 degrees Celsius.", opts:["boils","has boiled"], ans:"boils", hint:"Fait scientifique → Present Simple." },
+  { s:"She ___ never tried Thai food before.", opts:["never tries","has never tried"], ans:"has never tried", hint:"'Never' + expérience → Present Perfect." },
+  { s:"The train ___ at 9:15 every day.", opts:["leaves","has left"], ans:"leaves", hint:"Horaire fixe / routine → Present Simple." },
+  { s:"___ they arrived yet? We're waiting!", opts:["Do they arrive","Have they arrived"], ans:"Have they arrived", hint:"'Yet' dans une question → Present Perfect." },
+  { s:"I ___ three coffees today — I'm so wired.", opts:["drink","have drunk"], ans:"have drunk", hint:"'Today' (journée en cours) + résultat → Present Perfect." },
+  { s:"Dogs ___ four legs.", opts:["have","have had"], ans:"have", hint:"Fait général → Present Simple." },
+  { s:"I ___ just finished a great book — you should read it!", opts:["just finish","have just finished"], ans:"have just finished", hint:"'Just' = résultat frais → Present Perfect." },
+  { s:"She ___ yoga three times a week.", opts:["does","has done"], ans:"does", hint:"Activité régulière → Present Simple." }
+];
+
+const TAB3 = [
+  { s:"I ___ (not/see) Tom since last Monday.", answers:["haven't seen","have not seen"], hint:"verb: see" },
+  { s:"She ___ (call) me twice last night.", answers:["called"], hint:"verb: call" },
+  { s:"The Earth ___ (revolve) around the Sun.", answers:["revolves"], hint:"verb: revolve" },
+  { s:"We ___ (finish) the project. It's done!", answers:["have finished","'ve finished"], hint:"verb: finish" },
+  { s:"He ___ (meet) the CEO in 2021.", answers:["met"], hint:"verb: meet" },
+  { s:"___ you ever ___ (ride) a horse? → Have you ever ___", answers:["ridden"], hint:"verb: ride — juste le participe passé" },
+  { s:"I ___ (live) in Lyon for three years now.", answers:["have lived","'ve lived","have been living"], hint:"verb: live" },
+  { s:"The shop ___ (open) at 9 AM every day.", answers:["opens"], hint:"verb: open" },
+  { s:"They ___ (move) to a new apartment last month.", answers:["moved"], hint:"verb: move" },
+  { s:"Oh, you ___ (cut) your hair! It looks great.", answers:["have cut","'ve cut"], hint:"verb: cut — résultat visible maintenant" }
+];
+
+// State per tab
+const state = {
+  tab1: { correct:0, answered:0 },
+  tab2: { correct:0, answered:0 },
+  tab3: { correct:0, answered:0 }
+};
+
+function updateScore(tab) {
+  const n = tab.replace('tab','');
+  document.getElementById('s'+n+'-score').textContent = state[tab].correct;
+  document.getElementById('s'+n+'-total').textContent = state[tab].answered;
+}
+
+// ——— MCQ ———
+function buildMCQ(containerId, data, tab) {
+  const c = document.getElementById(containerId);
+  c.innerHTML = '';
+  state[tab] = { correct:0, answered:0 };
+  updateScore(tab);
+
+  data.forEach((item, i) => {
+    const card = document.createElement('div');
+    card.className = 'ex-card';
+
+    const num = document.createElement('div');
+    num.className = 'ex-num';
+    num.textContent = 'Q' + String(i+1).padStart(2,'0');
+
+    const sent = document.createElement('div');
+    sent.className = 'ex-sentence';
+    sent.textContent = item.s;
+
+    const hint = document.createElement('div');
+    hint.className = 'ex-hint';
+    hint.textContent = item.hint;
+
+    const opts = document.createElement('div');
+    opts.className = 'mcq-options';
+
+    const fb = document.createElement('div');
+    fb.className = 'feedback';
+
+    item.opts.forEach(opt => {
+      const btn = document.createElement('button');
+      btn.className = 'mcq-btn';
+      btn.textContent = opt;
+      btn.addEventListener('click', function() {
+        if (card.dataset.done) return;
+        card.dataset.done = '1';
+
+        // disable all
+        opts.querySelectorAll('.mcq-btn').forEach(b => {
+          b.disabled = true;
+          if (b.textContent === item.ans) b.classList.add('correct');
+        });
+
+        state[tab].answered++;
+        if (opt === item.ans) {
+          btn.classList.add('correct');
+          fb.className = 'feedback correct';
+          fb.textContent = '✓ Correct !';
+          state[tab].correct++;
+        } else {
+          btn.classList.add('wrong');
+          fb.className = 'feedback wrong';
+          fb.innerHTML = '✗ Réponse : <span class="ans">' + item.ans + '</span>';
+        }
+        updateScore(tab);
+      });
+      opts.appendChild(btn);
+    });
+
+    card.appendChild(num);
+    card.appendChild(sent);
+    card.appendChild(hint);
+    card.appendChild(opts);
+    card.appendChild(fb);
+    c.appendChild(card);
+  });
+}
+
+// ——— FILL GAP ———
+function buildFill(containerId, data, tab) {
+  const c = document.getElementById(containerId);
+  c.innerHTML = '';
+  state[tab] = { correct:0, answered:0 };
+  updateScore(tab);
+
+  data.forEach((item, i) => {
+    const card = document.createElement('div');
+    card.className = 'ex-card';
+
+    const num = document.createElement('div');
+    num.className = 'ex-num';
+    num.textContent = 'Q' + String(i+1).padStart(2,'0');
+
+    const sent = document.createElement('div');
+    sent.className = 'ex-sentence';
+    sent.textContent = item.s;
+
+    const hint = document.createElement('div');
+    hint.className = 'ex-hint';
+    hint.textContent = 'Indice : ' + item.hint;
+
+    const row = document.createElement('div');
+    row.className = 'input-row';
+
+    const inp = document.createElement('input');
+    inp.className = 'ex-input';
+    inp.type = 'text';
+    inp.placeholder = 'Ta réponse…';
+
+    const btn = document.createElement('button');
+    btn.className = 'check-btn';
+    btn.textContent = 'Check';
+
+    const fb = document.createElement('div');
+    fb.className = 'feedback';
+
+    function check() {
+      if (inp.disabled) return;
+      const val = inp.value.trim().toLowerCase().replace(/['']/g,"'");
+      const ok = item.answers.some(a => {
+        const clean = a.toLowerCase().replace(/['']/g,"'");
+        return val === clean || val.replace(/\s+/g,'') === clean.replace(/\s+/g,'');
+      });
+      inp.disabled = true;
+      btn.disabled = true;
+      state[tab].answered++;
+      if (ok) {
+        inp.classList.add('correct');
+        fb.className = 'feedback correct';
+        fb.textContent = '✓ Correct !';
+        state[tab].correct++;
+      } else {
+        inp.classList.add('wrong');
+        fb.className = 'feedback wrong';
+        fb.innerHTML = '✗ Attendu : <span class="ans">' + item.answers[0] + '</span>';
+      }
+      updateScore(tab);
+    }
+
+    btn.addEventListener('click', check);
+    inp.addEventListener('keydown', e => { if (e.key === 'Enter') check(); });
+
+    row.appendChild(inp);
+    row.appendChild(btn);
+
+    card.appendChild(num);
+    card.appendChild(sent);
+    card.appendChild(hint);
+    card.appendChild(row);
+    card.appendChild(fb);
+    c.appendChild(card);
+  });
+}
+
+// ——— TABS ———
+document.querySelectorAll('nav button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tab = btn.dataset.tab;
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    document.getElementById(tab).classList.add('active');
+    btn.classList.add('active');
+  });
+});
+
+// ——— RESET ———
+document.querySelectorAll('.reset-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tab = btn.dataset.reset;
+    if (tab === 'tab1') buildMCQ('tab1-ex', TAB1, 'tab1');
+    if (tab === 'tab2') buildMCQ('tab2-ex', TAB2, 'tab2');
+    if (tab === 'tab3') buildFill('tab3-ex', TAB3, 'tab3');
+  });
+});
+
+// ——— INIT ———
+buildMCQ('tab1-ex', TAB1, 'tab1');
+buildMCQ('tab2-ex', TAB2, 'tab2');
+buildFill('tab3-ex', TAB3, 'tab3');
+</script>
+</body>
+</html>
